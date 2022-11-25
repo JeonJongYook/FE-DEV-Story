@@ -1,26 +1,47 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <PageHeader/>
+  <router-view/>  
+  <PageFooter/> 
+  <LoadingBar :loading="this.$store.state.loadingStatus"></LoadingBar>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import axios from 'axios';
+import PageHeader from '@/components/PageHeader'
+import PageFooter from '@/components/PageFooter'
+import LoadingBar from '@/views/common/LoadingBar'
+// import { response } from 'express';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    PageFooter,
+    PageHeader,
+    LoadingBar
+  },
 }
 </script>
 
 <style>
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
